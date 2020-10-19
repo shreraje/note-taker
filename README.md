@@ -40,7 +40,9 @@ To check how this application works, user will have to follow the following step
 ## Links
 Recorded video: 
 
-GitHub Repo: https://github.com/shreraje/note-taker
+Heroku Deployed App Link: https://damp-stream-70179.herokuapp.com/
+
+GitHub Repo: https://github.com/shreraje/note-taker/
 
 ## Contribution
 Anyone can contribute!
