@@ -11,7 +11,7 @@ This project is to create an application where user can write, save, retrieve an
 
 ## Table of Contents
 * [Description](#description)
-* [User Story](#user_story)
+* [User Story](#user story)
 * [Installation](#installation)
 * [Technologies](#technologies)
 * [Contribution](#contribution)
