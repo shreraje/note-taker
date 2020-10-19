@@ -30,14 +30,15 @@ module.exports = function (app) {
 
     // Deleting array of note data from db.json file
     app.delete("/api/notes/:id", function (req, res) {
-
-        // Empty out the arrays of data
-        toDelete.splice(req.params.id, 1);
+        var toDelete = JSON.parse(fs.readFileSync('./db/db.json').toString());
+        toDelete = toDelete.filter(function (note) {
+            return note.id != req.params.id;
+        });
 
         // Adding the updated notes into db.json file
-        fs.writeFileSync("./db/db.json", JSON.stringify(storeData), function (err) {
+        fs.writeFileSync("./db/db.json", JSON.stringify(toDelete), function (err) {
             if (err) throw err;
         });
-        res.json(storeData);
+        res.json({ ok: true });
     });
 };
