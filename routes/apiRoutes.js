@@ -13,7 +13,11 @@ module.exports = function (app) {
 
     // API POST Requests
     app.post("/api/notes", function (req, res) {
-        storeData.push(req.body);
+
+        // Adding id to each note
+        let note = req.body;
+        note.id = Date.now();
+        storeData.push(note);
 
         // Adding the updated notes into db.json file
         fs.writeFileSync("./db/db.json", JSON.stringify(storeData), function (err) {
@@ -21,14 +25,14 @@ module.exports = function (app) {
         });
 
         // Return new note for user
-        res.json(req.body)
+        res.json(storeData);
     });
 
     // Deleting array of note data from db.json file
     app.delete("/api/notes/:id", function (req, res) {
 
         // Empty out the arrays of data
-        storeData.splice(req.params.id, 1)
+        toDelete.splice(req.params.id, 1);
 
         // Adding the updated notes into db.json file
         fs.writeFileSync("./db/db.json", JSON.stringify(storeData), function (err) {
@@ -36,5 +40,4 @@ module.exports = function (app) {
         });
         res.json(storeData);
     });
-
 };
