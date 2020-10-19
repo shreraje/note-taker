@@ -11,7 +11,7 @@ This project is to create an application where user can write, save, retrieve an
 
 ## Table of Contents
 * [Description](#description)
-* [User Story](#user story)
+* [User Story](#userstory)
 * [Installation](#installation)
 * [Technologies](#technologies)
 * [Contribution](#contribution)
@@ -21,7 +21,7 @@ This project is to create an application where user can write, save, retrieve an
 * [Questions](#questions)
 
 ## User Story
-AS a user, I want to be able to write, save and delete notes, I have written before so that I can organize my thoughts and keep track of tasks I need to complete.
+As a user, I want to be able to write, save and delete notes, I have written before so that I can organize my thoughts and keep track of tasks I need to complete.
 
 ## Installation
 To check how this application works, user will have to follow the following steps-
