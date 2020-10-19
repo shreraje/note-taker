@@ -39,6 +39,6 @@ module.exports = function (app) {
         fs.writeFileSync("./db/db.json", JSON.stringify(toDelete), function (err) {
             if (err) throw err;
         });
-        res.json({ ok: true });
+        res.json(toDelete);
     });
 };
