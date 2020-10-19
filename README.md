@@ -5,7 +5,6 @@
 <img src="https://img.shields.io/badge/License-GNU AGPLv3.0-blue.svg" alt="License image of GNU AGPLv3.0" />
   
 ## Description
-Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
 
 This project is to create an application where user can write, save, retrieve and delete the data according to user choice. The note, writes will be stored in JSON file which acts as a database. This application was created using Express backend and save-retrieve note data from JSON file. 
 
