@@ -20,7 +20,7 @@ This project is to create an application where user can write, save, retrieve an
 * [Contacts](#contacts)
 * [Questions](#questions)
 
-## UserStory
+## User Story
 AS a user, I want to be able to write, save and delete notes, I have written before so that I can organize my thoughts and keep track of tasks I need to complete.
 
 ## Installation
