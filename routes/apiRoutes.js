@@ -15,30 +15,36 @@ module.exports = function (app) {
     app.post("/api/notes", function (req, res) {
 
         // Adding id to each note
-        let note = req.body;
-        note.id = Date.now();
-        storeData.push(note);
+        let newNote = req.body;
+        newNote['id'] = Date.now();
+        storeData.push(newNote);
 
         // Adding the updated notes into db.json file
-        fs.writeFileSync("./db/db.json", JSON.stringify(storeData), function (err) {
+        fs.writeFile("./db/db.json", JSON.stringify(storeData), function (err) {
             if (err) throw err;
         });
 
         // Return new note for user
-        res.json(storeData);
+        res.json(newNote);
     });
 
     // Deleting array of note data from db.json file
     app.delete("/api/notes/:id", function (req, res) {
-        var toDelete = JSON.parse(fs.readFileSync('./db/db.json').toString());
-        toDelete = toDelete.filter(function (note) {
-            return note.id != req.params.id;
-        });
-
-        // Adding the updated notes into db.json file
-        fs.writeFileSync("./db/db.json", JSON.stringify(toDelete), function (err) {
+        var chosen = req.params.id;
+        fs.readFile("./db/db.json", function (err, data) {
             if (err) throw err;
+            var jsonData = JSON.parse(data);
+            const toDelete = jsonData.find(note => {
+                return note.id == chosen;
+            });
+            const index = jsonData.indexOf(toDelete);
+            jsonData.splice(index, 1);
+            
+            // Adding the updated notes into db.json file
+            fs.writeFile("./db/db.json", JSON.stringify(jsonData), function (err) {
+                if (err) throw err;
+            });
+            res.json(storeData);
         });
-        res.json(toDelete);
     });
 };

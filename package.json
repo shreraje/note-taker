@@ -10,15 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "json": "^10.0.0",
-    "node": "^14.13.0",
-    "nodemon": "^2.0.4"
+    "node": "^14.14.0",
+    "nodemon": "^2.0.6"
   },
   "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "note-taker"
   },
-  "description": ""
+  "description": "<img src=\"https://img.shields.io/badge/License-GNU AGPLv3.0-blue.svg\" alt=\"License image of GNU AGPLv3.0\" />",
+  "keywords": []
 }
