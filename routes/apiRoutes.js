@@ -1,5 +1,6 @@
 // LOAD DATA
 var fs = require("fs");
+var path = require("path");
 var storeData = require("../db/db.json");
 
 // ROUTING
@@ -20,7 +21,7 @@ module.exports = function (app) {
         storeData.push(newNote);
 
         // Adding the updated notes into db.json file
-        fs.writeFile("./db/db.json", JSON.stringify(storeData), function (err) {
+        fs.writeFileSync(path.join(__dirname, "../db/db.json"), JSON.stringify(storeData), function (err) {
             if (err) throw err;
         });
 
@@ -30,21 +31,12 @@ module.exports = function (app) {
 
     // Deleting array of note data from db.json file
     app.delete("/api/notes/:id", function (req, res) {
-        var chosen = req.params.id;
-        fs.readFile("./db/db.json", function (err, data) {
+        storeData = storeData.filter((note) => note.id != req.params.id);
+
+        // Adding the updated notes into db.json file
+        fs.writeFileSync(path.join(__dirname, "../db/db.json"), JSON.stringify(storeData), function (err) {
             if (err) throw err;
-            var jsonData = JSON.parse(data);
-            const toDelete = jsonData.find(note => {
-                return note.id == chosen;
-            });
-            const index = jsonData.indexOf(toDelete);
-            jsonData.splice(index, 1);
-            
-            // Adding the updated notes into db.json file
-            fs.writeFile("./db/db.json", JSON.stringify(jsonData), function (err) {
-                if (err) throw err;
-            });
-            res.json(storeData);
         });
+        res.json({ ok: true });
     });
 };
